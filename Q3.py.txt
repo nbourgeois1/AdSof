@@ -1,0 +1,24 @@
+import matplotlib.pyplot as plt
+import os
+os.chdir('/Users/nate/downloads')
+
+f = open("sample_AAPL.txt", "r")
+listItems = f.read().splitlines()
+
+appleprices=listItems
+for i in range(0, len(listItems)):
+    appleprices[i] = float(listItems[i])
+
+days_range = []
+for i in range(1, 253):
+    days_range.append(i)
+
+current_max_val = -float('inf')  
+max_profit_val = 0
+
+for price in reversed(appleprices):
+    current_max_val = max(current_max_val, price)
+    potential_profit = current_max_val - price
+    max_profit_val = max(potential_profit, max_profit_val)
+
+print("Maximum Potential Profit: $", max_profit_val)
