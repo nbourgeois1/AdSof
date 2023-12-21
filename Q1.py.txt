@@ -1,0 +1,16 @@
+import math
+import numpy as np
+import os
+os.chdir('/Users/nate/downloads')
+
+f = open("sample_AAPL.txt", "r")
+listItems = f.read().splitlines()
+
+appleprices=listItems
+for i in range(0, len(listItems)):
+    appleprices[i] = float(listItems[i])
+
+h = np.mean(appleprices)
+print(h)
+std = np.std(appleprices)
+print(std)
